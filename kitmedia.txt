@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pembelajaran Kriptografi</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+        h1, h2 {
+            color: #0077b6;
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .input-group {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            background-color: #0077b6;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #005f89;
+        }
+        .result {
+            background: #e8f5e9;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #c8e6c9;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Pembelajaran Kriptografi</h1>
+        <p><strong>Maksud:</strong> Kriptografi ialah seni melindungi maklumat dengan cara penyulitan supaya hanya pihak tertentu dapat memahami.</p>
+        <p><strong>Kepentingan:</strong> Melindungi maklumat peribadi, keselamatan data, dan mencegah akses tidak sah.</p>
+        
+        <h2>Aktiviti: Penyulitan dan Nyahsulit</h2>
+        <div class="input-group">
+            <label for="input-text">Masukkan Teks:</label>
+            <textarea id="input-text" rows="4" placeholder="Masukkan teks biasa di sini..."></textarea>
+        </div>
+        <button onclick="encrypt()">Penyulitan (Encryption)</button>
+        <button onclick="decrypt()">Nyahsulit (Decryption)</button>
+        <div class="result" id="result"></div>
+    </div>
+
+    <script>
+        function encrypt() {
+            const inputText = document.getElementById('input-text').value;
+            if (!inputText) {
+                alert('Sila masukkan teks!');
+                return;
+            }
+            // Proses penyulitan: Tukar teks ke kod ASCII dan tambah nilai
+            const encrypted = inputText.split('')
+                .map(char => String.fromCharCode(char.charCodeAt(0) + 3))
+                .join('');
+            document.getElementById('result').innerHTML = `<strong>Hasil Penyulitan:</strong> ${encrypted}`;
+        }
+
+        function decrypt() {
+            const inputText = document.getElementById('input-text').value;
+            if (!inputText) {
+                alert('Sila masukkan teks yang telah disulitkan!');
+                return;
+            }
+            // Proses nyahsulit: Tukar kod ASCII kembali ke teks asal
+            const decrypted = inputText.split('')
+                .map(char => String.fromCharCode(char.charCodeAt(0) - 3))
+                .join('');
+            document.getElementById('result').innerHTML = `<strong>Hasil Nyahsulit:</strong> ${decrypted}`;
+        }
+    </script>
+</body>
+</html>
